@@ -11,13 +11,10 @@ class Task extends React.Component {
         onHandleRemoveTask: PropTypes.func.isRequired
     }
 
-    handleRemoveTask = () => {
-        this.props.onHandleRemoveTask(this.props.data.taskId);
-    }
     render () {
         return (
             <div className={`taskItem ${this.props.data.completed ? 'completed': ''}` } id={this.props.data.taskId}>
-                <button onClick={this.props.handleRemoveTask}>X</button>
+                <button onClick={this.props.onhandleRemoveTask}>X</button>
                 <input 
                     type="checkbox" 
                     onChange={(e)=> 

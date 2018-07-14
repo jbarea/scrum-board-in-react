@@ -83,16 +83,12 @@ class App extends Component {
    this.setState(prevState => {
      let newLists = prevState.lists.map(list => {
        if(list.listId === listId) {
-         list.tasks = list.tasks.map(task => {
-           if (task.taskId === taskId) {
-             
-           }
-         })
-       }
-     })
-     let newTasks = prevState.list.filter( task => task.taskId !== taskId);
-     return {tasks: newTasks}
-   })
+         list.tasks = list.tasks.filter(task => task.taskId !== taskId);
+        }
+        return list  
+      })
+      return { lists: newLists };
+    })
  }
 
   render() {
@@ -106,7 +102,11 @@ class App extends Component {
         <section>
           <div className="lists">
             { this.state.lists.map( listData => 
-            <List key={listData.listId} data={listData} onHandleNewTask={this.addNewTask.bind(this)} onHandleRemoveList={this.removeList.bind(this)} onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}/>)}
+            <List key={listData.listId} data={listData} 
+            onHandleNewTask={this.addNewTask.bind(this)} 
+            onHandleRemoveList={this.removeList.bind(this)}
+            onHandleRemoveTask={this.removeTask.bind(this)} 
+            onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}/>)}
           </div>
         </section>
       </div>
