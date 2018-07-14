@@ -8,7 +8,8 @@ class Task extends React.Component {
     static propTypes = {
         data: TaskType,
         onHandleMarkAsCompleted: PropTypes.func.isRequired,
-        onHandleRemoveTask: PropTypes.func.isRequired
+        onHandleRemoveTask: PropTypes.func.isRequired,
+        onHandleChangeTaskName: PropTypes.func.isRequired
     }
 
     render () {
@@ -24,7 +25,11 @@ class Task extends React.Component {
                             e.target.checked
                         )}
                     checked={this.props.data.completed}/>
-                <div className="taskText">
+                <div className="taskText" onDoubleClick={(e) => 
+                    this.props.onHandleChangeTaskName(
+                        this.props.data.taskId,
+                        this.props.data.listId,
+                        this.props.data.text=this.props.data.newText)}>
                     {this.props.data.text}
                   </div>
             </div>

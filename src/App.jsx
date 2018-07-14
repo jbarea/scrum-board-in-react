@@ -91,6 +91,23 @@ class App extends Component {
     })
  }
 
+ changeTaskName(taskId,listId,newText){
+   this.setState(prevState => {
+     let newLists = prevState.lists.map(list => {
+       if(list.listId === listId) {
+         list.tasks = list.tasks.map(task => {
+           if (task.taskId === taskId) {
+             task.text = newText;
+           }
+           return task;
+         })
+       }
+       return list;
+     })
+     return { lists: newLists};
+   })
+ }
+
   render() {
     localStorage.setItem('lists', JSON.stringify(this.state.lists));
     return (
@@ -106,7 +123,8 @@ class App extends Component {
             onHandleNewTask={this.addNewTask.bind(this)} 
             onHandleRemoveList={this.removeList.bind(this)}
             onHandleRemoveTask={this.removeTask.bind(this)} 
-            onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}/>)}
+            onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}
+            onHandleChangeTaskName={this.changeTaskName.bind(this)}/>)}
           </div>
         </section>
       </div>
