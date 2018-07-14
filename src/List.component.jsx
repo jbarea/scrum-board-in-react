@@ -32,7 +32,7 @@ class List extends React.Component {
         this.props.onHandleRemoveList(this.props.data.listId);
     }
     handleRemoveTask = () => {
-        this.props.onHandleRemoveTask(this.props.data.taskId);
+        this.props.onHandleRemoveTask(this.props.data.taskId,this.props.data.listId);
     }
     render() {
         return (

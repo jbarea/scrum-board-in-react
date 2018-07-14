@@ -14,7 +14,8 @@ class Task extends React.Component {
     render () {
         return (
             <div className={`taskItem ${this.props.data.completed ? 'completed': ''}` } id={this.props.data.taskId}>
-                <button onClick={this.props.onhandleRemoveTask}>X</button>
+                <button onClick={this.props.onHandleRemoveTask}>X</button>
+                {console.log(this.props.onHandleRemoveTask.listId)}
                 <input 
                     type="checkbox" 
                     onChange={(e)=> 
