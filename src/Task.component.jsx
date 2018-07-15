@@ -37,8 +37,3 @@ class Task extends React.Component {
     }
 }
 export default Task;
-
-/**
- * onDoubleClick="this.contentEditable=true;this.className='inEdit';"
-                onblur="this.contentEditable=false;this.className='';" contenteditable="false" class=""
- */

@@ -132,3 +132,4 @@ class App extends Component {
   }
 }
 export default App;
+/**ondblclick="this.contentEditable=true;this.className='inEdit';" onblur="this.contentEditable=false;this.className='';" contenteditable="false" class="" */
