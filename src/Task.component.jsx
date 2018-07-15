@@ -29,7 +29,7 @@ class Task extends React.Component {
                     this.props.onHandleChangeTaskName(
                         this.props.data.taskId,
                         this.props.data.listId,
-                        this.props.data.text=this.props.data.newText)}>
+                        this.props.data.text)}>
                     {this.props.data.text}
                   </div>
             </div>
@@ -37,3 +37,8 @@ class Task extends React.Component {
     }
 }
 export default Task;
+
+/**
+ * onDoubleClick="this.contentEditable=true;this.className='inEdit';"
+                onblur="this.contentEditable=false;this.className='';" contenteditable="false" class=""
+ */

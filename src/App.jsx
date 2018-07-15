@@ -44,7 +44,7 @@ class App extends Component {
      return { lists: newLists}
    })
   }
-  handleTaskNameChange = (e) => {
+  handleChangeTaskName = (e) => {
     this.setState({addNewTaskText: e.target.value})
   }
   handleInputChange = (e) => {
@@ -54,7 +54,7 @@ class App extends Component {
     if(e.keyCode === 13) {
       this.addNewList();
     }
-    }
+  }
   removeList(listId) {
       this.setState(prevState => {
         let newLists = prevState.lists.filter( list => list.listId !== listId) ;
