@@ -15,4 +15,6 @@
 .editable{
     border: none;
     font-size: 16px;
+    height:20px;
+    resize: none;
 }
