@@ -11,7 +11,6 @@ class List extends React.Component {
         onHandleNewTask: PropTypes.func.isRequired,
         onHandleRemoveList: PropTypes.func.isRequired,
         onHandleRemoveTask: PropTypes.func.isRequired,
-        onHandleChangeTaskName: PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -35,9 +34,7 @@ class List extends React.Component {
     handleRemoveTask = () => {
         this.props.onHandleRemoveTask(this.props.data.taskId,this.props.data.listId);
     }
-    handleChangeTaskName = () => {
-        this.props.onHandleChangeTaskName(this.props.data.taskId,this.props.data.listId,this.props.data.newText);
-    }
+
     render() {
         return (
             <div className="list"
@@ -60,7 +57,6 @@ class List extends React.Component {
                     data={taskData} 
                     onHandleMarkAsCompleted={this.props.onHandleMarkAsCompleted}
                     onHandleRemoveTask={this.props.onHandleRemoveTask}
-                    onHandleChangeTaskName={this.props.onHandleChangeTaskName}
                     key={taskData.taskId}/>)}
             </div>
         )

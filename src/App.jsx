@@ -31,6 +31,7 @@ class App extends Component {
                       "taskId": this.generateId('task'),
                       "text": taskName,
                       "completed": false,
+                      "editable": false,
                       "color": "white",
                       "listId": listId
                   }
@@ -44,9 +45,7 @@ class App extends Component {
      return { lists: newLists}
    })
   }
-  handleChangeTaskName = (e) => {
-    this.setState({addNewTaskText: e.target.value})
-  }
+ 
   handleInputChange = (e) => {
     this.setState({addNewListText: e.target.value})
   }
@@ -91,25 +90,26 @@ class App extends Component {
     })
  }
 
- changeTaskName(taskId,listId,newText){
-   this.setState(prevState => {
-     let newLists = prevState.lists.map(list => {
-       if(list.listId === listId) {
-         list.tasks = list.tasks.map(task => {
-           if (task.taskId === taskId) {
-             task.text = newText;
-           }
-           return task;
-         })
-       }
-       return list;
-     })
-     return { lists: newLists};
-   })
- }
+//  changeTaskName(taskId,listId,newText){
+//    this.setState(prevState => {
+//      let newLists = prevState.lists.map(list => {
+//        if(list.listId === listId) {
+//          list.tasks = list.tasks.map(task => {
+//            if (task.taskId === taskId) {
+//              task.text = newText;
+//            }
+//            return task;
+//          })
+//        }
+//        return list;
+//      })
+//      return { lists: newLists};
+//    })
+//  }
 
   render() {
     localStorage.setItem('lists', JSON.stringify(this.state.lists));
+    
     return (
       <div className="App">
         <header className="addList">
@@ -123,8 +123,7 @@ class App extends Component {
             onHandleNewTask={this.addNewTask.bind(this)} 
             onHandleRemoveList={this.removeList.bind(this)}
             onHandleRemoveTask={this.removeTask.bind(this)} 
-            onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}
-            onHandleChangeTaskName={this.changeTaskName.bind(this)}/>)}
+            onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}/>)}
           </div>
         </section>
       </div>
