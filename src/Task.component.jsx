@@ -3,12 +3,17 @@ import TaskType from './Task.type.js';
 
 import PropTypes from 'prop-types';
 import './Task.component.css';
+import ColorPicker from './ColorPicker.component.jsx';
 
 class Task extends React.Component {
     static propTypes = {
         data: TaskType,
         onHandleMarkAsCompleted: PropTypes.func.isRequired,
         onHandleRemoveTask: PropTypes.func.isRequired,
+    }
+
+    handleInputChange = (e) => {
+        this.setState({ newTaskName: e.target.value })
     }
 
     render () {
@@ -24,7 +29,10 @@ class Task extends React.Component {
                             e.target.checked
                         )}
                     checked={this.props.data.completed}/>
-                <textarea className="taskText editable">
+                {/* <button onClick={this.handleClick}>Color</button> */}
+                
+                <ColorPicker />
+                <textarea className="taskText editable" onChange={(e)=>this.props.data.text = this.newTaskName}>
                     {this.props.data.text}
                   </textarea>
             </div>
