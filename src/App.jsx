@@ -77,7 +77,40 @@ class App extends Component {
         return { lists: newLists }
       })
   }
+  updateTaskName(taskId,listId,taskText){
+    this.setState(prevState => {
+      let newLists = prevState.lists.map(list => {
+        if (list.listId === listId) {
+          list.tasks = list.tasks.map(task => {
+            if (task.taskId === taskId) {
+              task.text = taskText;
+            }
+            return task;
+          })
+        }
+        return list
+      });
 
+      return { lists: newLists }
+    })
+  }
+  updateTaskColor(taskId,listId,taskColor){
+    this.setState(prevState => {
+      let newLists = prevState.lists.map(list => {
+        if (list.listId === listId) {
+          list.tasks = list.tasks.map(task => {
+            if (task.taskId === taskId) {
+              task.color = taskColor;
+            }
+            return task;
+          })
+        }
+        return list
+      });
+
+      return { lists: newLists }
+    })
+  }
  removeTask(taskId,listId){
    this.setState(prevState => {
      let newLists = prevState.lists.map(list => {
@@ -123,6 +156,8 @@ class App extends Component {
             onHandleNewTask={this.addNewTask.bind(this)} 
             onHandleRemoveList={this.removeList.bind(this)}
             onHandleRemoveTask={this.removeTask.bind(this)} 
+            onHandleUpdateTaskName={this.updateTaskName.bind(this)}
+            onHandleUpdateTaskColor={this.updateTaskColor.bind(this)}
             onHandleMarkAsCompleted={this.markAsCompleted.bind(this)}/>)}
           </div>
         </section>

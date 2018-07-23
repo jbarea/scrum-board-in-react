@@ -11,6 +11,8 @@ class List extends React.Component {
         onHandleNewTask: PropTypes.func.isRequired,
         onHandleRemoveList: PropTypes.func.isRequired,
         onHandleRemoveTask: PropTypes.func.isRequired,
+        onHandleUpdateTaskName: PropTypes.func.isRequired,
+        onHandleUpdateTaskColor: PropTypes.func.isRequired,
     }
 
     constructor(props) {
@@ -34,7 +36,12 @@ class List extends React.Component {
     handleRemoveTask = () => {
         this.props.onHandleRemoveTask(this.props.data.taskId,this.props.data.listId);
     }
-
+    handleUpdateTaskName(){
+        this.props.onHandleUpdateTaskName(this.props.data.taskId,this.props.data.listId,this.props.data.taskText);
+    }
+    handleUpdateTaskColor(){
+        this.props.onHandleUpdateTaskColor(this.props.data.taskId,this.props.data.listId,this.props.data.taskColor);
+    }
     render() {
         return (
             <div className="list"
@@ -57,6 +64,8 @@ class List extends React.Component {
                     data={taskData} 
                     onHandleMarkAsCompleted={this.props.onHandleMarkAsCompleted}
                     onHandleRemoveTask={this.props.onHandleRemoveTask}
+                    onHandleUpdateTaskName={this.props.onHandleUpdateTaskName}
+                    onHandleUpdtaeTaskColor={this.props.onHandleUpdateTaskColor}
                     key={taskData.taskId}/>)}
             </div>
         )
